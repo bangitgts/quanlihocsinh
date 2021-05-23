@@ -4,7 +4,6 @@ import { Menu } from '../Menu';
 class Information extends React.Component {
   render() {
     return (
-    
       <div>
           <Menu/>
       </div>

@@ -1,15 +1,18 @@
+import {userStd} from '../_reducers/usersStd.reducer'
 export function configureFakeBackend() {
   let users = [
     {
       id: 1,
       username: "nguyenvana",
       password: "abc",
+      hocvan: "giaovien",
       fullName: "Nguyễn Văn A",
       dateBirth: "12/2/1993",
-      phoneNumber: "03128812128",
+      phoneNumber: "031288121",
       addRess: "Tô Ký, phường Tân Chánh Hiệp, quận 12, tp Hồ Chí Minh",
     },
   ];
+  users.push(userStd)
   let realFetch = window.fetch;
   window.fetch = function (url, opts) {
     return new Promise((resolve, reject) => {
@@ -19,15 +22,18 @@ export function configureFakeBackend() {
           let filteredUsers = users.filter((user) => {
             return (
               user.username === params.username &&
-              user.password === params.password
+              user.password === params.password &&
+              user.hocvan === "giaovien"
             );
           });
+
           if (filteredUsers.length) {
             let user = filteredUsers[0];
             let responseJson = {
               id: user.id,
               username: user.username,
               fullName: user.fullName,
+              hocVan: user.hocvan,
               dateBirth: user.dateBirth,
               phoneNumber: user.phoneNumber,
               token: "fake-jwt-token",
@@ -60,4 +66,6 @@ export function configureFakeBackend() {
       }, 500);
     });
   };
+
 }
+

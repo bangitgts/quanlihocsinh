@@ -67,9 +67,7 @@ class Menu extends React.Component {
             <span className="icon-bar" />
             <span className="icon-bar" />
           </button>
-          <a className="navbar-brand" href="#">
-            Title
-          </a>
+      
         </div>
 
         <div className="collapse navbar-collapse navbar-ex1-collapse">

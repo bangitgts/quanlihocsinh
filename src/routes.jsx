@@ -1,10 +1,8 @@
 import React from "react";
 import { LoginPage } from "./LoginPage";
 import { ActionManager } from "./pages/ActionManager/ActionManager";
-import { Homepage } from "./pages/Homepage";
-import { Manager } from "./pages/Manager";
 import { About } from "./pages/About";
-//import { NotFoundPage } from "./pages/NotFoundPage";
+import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 const routes = [
   {
     path: "/login",
@@ -20,6 +18,6 @@ const routes = [
     path: "/student/add",
     exact: false,
     main: () => <ActionManager/>
-  },
+  }
 ];
 export { routes };

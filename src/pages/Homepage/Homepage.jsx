@@ -10,7 +10,6 @@ class Homepage extends React.Component {
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <Menu/>
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          {/* <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8"> */}
             <div className="panel panel-primary">
               <div className="panel-heading">
                 <h4 className="panel-title">Thông tin cá nhân</h4>
@@ -53,9 +52,6 @@ function mapStateToProps(state) {
     users,
   };
 }
-
-
-
-const connectedHomePage = connect(mapStateToProps, null)(Homepage);
+const connectedHomePage = connect(mapStateToProps)(Homepage);
 
 export { connectedHomePage as Homepage };

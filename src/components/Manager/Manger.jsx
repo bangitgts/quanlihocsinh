@@ -7,7 +7,7 @@ class Manager extends React.Component {
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div className="panel panel-primary">
           <div className="panel-heading">
-            <h3 className="panel-title">Panel title</h3>
+            <h3 className="panel-title">IOS</h3>
           </div>
           <div className="panel-body">
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -62,13 +62,6 @@ class Manager extends React.Component {
                           </span>
                         </a>
                       </li>               
-                      <li role="separator" className="divider" />
-                      <li>
-                        <a role="button">Trạng Thái Kích Hoạt</a>
-                      </li>
-                      <li>
-                        <a role="button">Trạng Thái Ẩn</a>
-                      </li>
                     </ul>
                   </div>
                 </div>

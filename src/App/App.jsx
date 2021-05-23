@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 import { history } from "../_helpers";
 import { alertActions } from "../_actions";
 import { PrivateRoute } from "../_components";
-import { Homepage } from '../pages/Homepage';
-import { Information } from "../components/Information";
+import { Homepage } from "../pages/Homepage";
 import { routes } from "../routes";
 import { Manager } from "../pages/Manager";
 class App extends React.Component {
@@ -19,20 +18,17 @@ class App extends React.Component {
   showContent(routes) {
     var result = null;
     if (routes.length > 0) {
-      var result = routes.map((route, index) => {
+      var result = routes.map((route) => {
         return (
-          <Route
-            path={route.path}
-            exact={route.exact}
-            component={route.main}
-          />
+          <Route path={route.path} exact={route.exact} component={route.main} />
         );
       });
     }
     return result;
   }
+
   render() {
-    const { alert } = this.props;
+    const { alert,user } = this.props;
     return (
       <Router history={history}>
         <div className="container">
@@ -40,15 +36,11 @@ class App extends React.Component {
             {alert.message && (
               <div className={`alert ${alert.type}`}>{alert.message}</div>
             )}
-             
             <div>
-            {/* <Information/> */}
-              {/* <Route path="/login" exact component={LoginPage} /> */}
-                <PrivateRoute exact path="/" component= { Homepage } />
-                <PrivateRoute exact path="/manager" component={ Manager } />
-              {/* <Route path="" exact component={ NotFoundPage } /> */}
+               <PrivateRoute exact path="/" component={Homepage} />
+              <PrivateRoute exact path="/manager" component={Manager} /> 
               {this.showContent(routes)}
-          </div>
+            </div>
           </div>
         </div>
       </Router>
@@ -57,11 +49,14 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { alert } = state;
+  const { users,alert,authentication } = state;
+  const { user } = authentication;
   return {
     alert,
+    users,
+    user
   };
 }
 
-const connectedApp = connect(mapStateToProps)(App);
+const connectedApp = connect(mapStateToProps,null)(App);
 export { connectedApp as App };
