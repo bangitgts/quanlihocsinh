@@ -3,23 +3,21 @@ import { connect } from "react-redux";
 
 import { userActions } from "../../_actions";
 import { Menu } from "../../components/Menu";
-
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
-    let i = 3;
     this.state = {
-      id: i++,
-      nameStudent:"",
+      id: "",
+      nameStudent: "",
       maHs: "",
       ngaySinh: "",
-      soDienthoai:"",
-      diemTrungBinh: ""
+      soDienthoai: "",
+      diemTrungBinh: "",
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-  
+
   handleChange(e) {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -41,23 +39,62 @@ class LoginPage extends React.Component {
     this.setState({
       [name]: value,
     });
-    
   }
   onSubmit(event) {
-    localStorage.setItem('dataGet',JSON.stringify(this.state))
+    //var pushItem = localStorage.setItem('dataAdd',JSON.stringify(this.state));
+    //this.props.onReceive('a');
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      //"id": `${this.state.id}`,
+      nameStudent: `${this.state.nameStudent}`,
+      maHs: `${this.state.maHs}`,
+      ngaySinh: `${this.state.ngaySinh}`,
+      soDienThoai: `${this.state.soDienthoai}`,
+      diemTrungBinh: `${this.state.diemTrungBinh}`,
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+    fetch("http://localhost:3000/data", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+    alert("Them thanh cong");
+    this.setState({
+      id: "",
+      nameStudent: "",
+      maHs: "",
+      ngaySinh: "",
+      soDienthoai: "",
+      diemTrungBinh: "",
+    });
+
     event.preventDefault();
   }
+  onClick() {}
   render() {
-    const { loggingIn } = this.props;
-    const { username, password, submitted } = this.state;
+    //    const { loggingIn } = this.props;
+    //  const { username, password, submitted } = this.state;
     return (
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <Menu />
+        <a href="/manager">
+          <button type="button" class="btn btn-default">
+            Trở về
+          </button>
+        </a>
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <label>Tên Học Sinh:</label>
               <input
+                value={this.state.nameStudent}
                 type="text"
                 className="form-control"
                 name="nameStudent"
@@ -67,24 +104,17 @@ class LoginPage extends React.Component {
             <div className="form-group">
               <label>Mã HS:</label>
               <input
+                value={this.state.maHs}
                 type="number"
                 className="form-control"
                 name="maHs"
                 onChange={this.onChange}
               />
             </div>
-            {/* <div className="form-group">
-              <label>Mật khẩu:</label>
-              <input
-                type="password"
-                className="form-control"
-                name="txtPassword"
-                onChange={this.onChange}
-              />
-            </div> */}
             <div className="form-group">
-              <label>Ngày Sinh</label>
+              <label>Ngay Sinh:</label>
               <input
+                value={this.state.ngaySinh}
                 type="date"
                 className="form-control"
                 name="ngaySinh"
@@ -92,41 +122,26 @@ class LoginPage extends React.Component {
               />
             </div>
             <div className="form-group">
-              <label>Số Điện Thoại</label>
+              <label>SDT</label>
               <input
-                type="text"
+                value={this.state.soDienthoai}
+                type="number"
                 className="form-control"
-                name="soDienThoai"
-                onChange={this.onChange}
-              />
-            </div>
-            {/* <div className="form-group">
-              <label>Điểm Toán</label>
-              <input
-                type="text"
-                className="form-control"
-                name="txtToan"
+                name="soDienthoai"
                 onChange={this.onChange}
               />
             </div>
             <div className="form-group">
-              <label>Điểm Lý</label>
+              <label>diem TB</label>
               <input
-                type="text"
-                className="form-control"
-                name="txtLy"
-                onChange={this.onChange}
-              />
-            </div> */}
-            <div className="form-group">
-              <label>Điểm TB</label>
-              <input
-                type="text"
+                value={this.state.diemTrungBinh}
+                type="number"
                 className="form-control"
                 name="diemTrungBinh"
                 onChange={this.onChange}
               />
             </div>
+
             <button type="submit" className="btn btn-primary">
               Lưu Lại
             </button>
@@ -142,7 +157,6 @@ function mapStateToProps(state) {
     loggingIn,
   };
 }
-
 
 const connectedLoginPage = connect(mapStateToProps)(LoginPage);
 export { connectedLoginPage as ActionManager };

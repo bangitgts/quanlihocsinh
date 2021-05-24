@@ -28,7 +28,6 @@ class HomePage extends React.Component {
                   />
                 </div>
                 <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-
                   <p>{user.id}</p>
                   <p>1</p>
                   <p>1</p>

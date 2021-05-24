@@ -8,51 +8,45 @@ class Manager extends React.Component {
   constructor(props) {
     super(props);
     let i = 0;
-    const dataLocal = [
-      {
-        id: i++,
-        nameStudent: "Nguyen B",
-        maHs: 185112003,
-        ngaySinh: "20/6/2000",
-        soDienThoai: "03844332",
-        diemTrungBinh: 8.8,
-      },
-      {
-        id: i++,
-        nameStudent: "Nguyen C",
-        maHs: 185112002,
-        ngaySinh: "20/6/2001",
-        soDienThoai: "0312io12io2",
-        diemTrungBinh: 8.1,
-      },
-      {
-        id: i++,
-        nameStudent: "Nguyen C",
-        maHs: 185112002,
-        ngaySinh: "20/6/2001",
-        soDienThoai: "0312io12io2",
-        diemTrungBinh: 8.1,
-      },
-    ];
-    localStorage.setItem("data", JSON.stringify(dataLocal));
-
+    //let dataAdd = JSON.parse(localStorage.getItem("dataAdd"));
+    //var dataLocal =
+    //dataLocal.push(dataAdd);
+    var b = JSON.parse(localStorage.getItem("data"));
     this.state = {
       fakeData: [],
       dataOn: [],
       value: "",
     };
+    //localStorage.setItem("data", JSON.stringify(this.state.fakeData));
+    console.log(localStorage.getItem("data"));
+    console.log(JSON.parse(localStorage.getItem("data")));
+    this.setState({
+      fakeData: JSON.parse(localStorage.getItem("data")),
+    });
+    console.log("Daylasate" + this.state.fakeData);
+    // let a = JSON.stringify(this.state.fakeData);
+    // console.log("gia tri length"+ a.length)
     this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
-    var storedNames = JSON.parse(localStorage.getItem("data"));
-    this.setState({
-      fakeData: storedNames,
-    });
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:3000/data", requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        console.log(
+          this.setState({
+            fakeData: JSON.parse(result)
+          })
+        )
+      })
+      .catch((error) => console.log("error", error));
   }
-  componentWillUnmount(){
-    dataLocal.push(JSON.parse(localStorage.getItem('dataGet')))
-  }
+  componentWillUnmount() {}
   onReceive(prams) {
     const fakeData = this.state.fakeData;
     fakeData.push(prams);

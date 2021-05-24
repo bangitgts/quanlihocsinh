@@ -4,11 +4,12 @@ class ManagerList extends React.Component {
     let data = this.props.onGetdata;
     function showProducts(data) {      
       var result = null;
+      let i = 1;
       if (data.length > 0) {
         result = data.map((data) => {
           return (
             <tr>
-              <td>{data.id}</td>
+              <td>{i++}</td>
               <td>{data.nameStudent}</td>
               <td>{data.maHs}</td>
               <td>{data.ngaySinh}</td>
