@@ -37,7 +37,7 @@ class App extends React.Component {
               <div className={`alert ${alert.type}`}>{alert.message}</div>
             )}
             <div>
-               <PrivateRoute exact path="/" component={Homepage} />
+              <PrivateRoute exact path="/" component={Homepage} />
               <PrivateRoute exact path="/manager" component={Manager} /> 
               {this.showContent(routes)}
             </div>

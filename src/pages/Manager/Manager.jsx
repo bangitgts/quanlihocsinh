@@ -3,29 +3,16 @@ import { Link } from "react-router-dom";
 import React from "react";
 import { Menu } from "../../components/Menu";
 import { ManagerList } from "../../components/MangerList/MangerList";
-
+//import ReactHTMLTableToExcel from "react-html-table-to-excel";
 class Manager extends React.Component {
   constructor(props) {
     super(props);
-    let i = 0;
-    //let dataAdd = JSON.parse(localStorage.getItem("dataAdd"));
-    //var dataLocal =
-    //dataLocal.push(dataAdd);
-    var b = JSON.parse(localStorage.getItem("data"));
     this.state = {
       fakeData: [],
       dataOn: [],
       value: "",
     };
-    //localStorage.setItem("data", JSON.stringify(this.state.fakeData));
-    console.log(localStorage.getItem("data"));
-    console.log(JSON.parse(localStorage.getItem("data")));
-    this.setState({
-      fakeData: JSON.parse(localStorage.getItem("data")),
-    });
     console.log("Daylasate" + this.state.fakeData);
-    // let a = JSON.stringify(this.state.fakeData);
-    // console.log("gia tri length"+ a.length)
     this.onChange = this.onChange.bind(this);
   }
 
@@ -40,34 +27,32 @@ class Manager extends React.Component {
       .then((result) => {
         console.log(
           this.setState({
-            fakeData: JSON.parse(result)
+            fakeData: JSON.parse(result),
           })
-        )
+          );
       })
       .catch((error) => console.log("error", error));
+      
   }
-  componentWillUnmount() {}
+ 
   onReceive(prams) {
     const fakeData = this.state.fakeData;
     fakeData.push(prams);
     this.setState(fakeData);
   }
   onChange(event) {
-    let newData = this.state.fakeData.filter(
-      (e) =>
-        e.nameStudent.search(event.target.value) !== -1 ||
-        e.diemTrungBinh.toString().search(event.target.value) !== -1 ||
-        e.maHs.toString().search(event.target.value) !== -1
+    console.log(this.state.fakeData)
+    let newData = this.state.fakeData.filter( (e) =>
+        e.nameStudent.search(event.target.value) !== -1
     );
+    
     this.setState({
       value: event.target.value,
       dataOn: newData,
     });
-
-    //localStorage.setItem('userDataon',this.state.dataOn)
   }
-
   render() {
+    
     const getDulieu =
       this.state.value === "" && this.state.fakeData.length > 0 ? (
         <ManagerList
@@ -80,6 +65,7 @@ class Manager extends React.Component {
       );
     return (
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
         <Menu />
         <div className="panel panel-primary">
           <div className="panel-heading">
@@ -99,13 +85,7 @@ class Manager extends React.Component {
                       className="form-control"
                       placeholder="Nhập từ khóa hệ thống sẽ tự động tìm kiếm"
                     />
-                    {/* <span className="input-group-btn">
-                      <button className="btn btn-primary" type="button">
-                        <span className="fa fa-search mr-5" />
-                        Tìm
-                      </button>
-                    </span> */}
-                  </div>
+                 </div>
                 </div>
                 <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                   <div className="dropdown">
@@ -139,13 +119,21 @@ class Manager extends React.Component {
                         </a>
                       </li>
                     </ul>
+
+                    <button
+                      onClick={this.xuatData}
+                      type="button"
+                      class="btn btn-default"
+                    >
+                      Xuất dữ liệu
+                    </button>
                   </div>
                 </div>
               </div>
               &nbsp;
               <div className="row">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <table className="table table-bordered table-hover">
+                  <table id="test-table-xls-button" className="table table-bordered table-hover">
                     <thead>
                       <tr>
                         <th className="text-center">STT</th>

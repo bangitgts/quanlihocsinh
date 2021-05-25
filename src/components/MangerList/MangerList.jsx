@@ -1,8 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 class ManagerList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.editText = this.editText.bind(this);
+  }
+  editText() {
+    console.log("anc");
+  }
   render() {
+    const getNew = JSON.stringify(localStorage.getItem("dataID")).length > 0 ? "/sua" : "/";
     let data = this.props.onGetdata;
-    function showProducts(data) {      
+    function showProducts(data) {
       var result = null;
       let i = 1;
       if (data.length > 0) {
@@ -16,14 +26,17 @@ class ManagerList extends React.Component {
               <td>18389389</td>
               <td>{data.diemTrungBinh}</td>
               <td className="text-center">
-                <button type="button" className="btn btn-warning">
-                  <span className="fa fa-pencil mr-5" />
+                <Link
+                  to={getNew}
+                  onClick={() => localStorage.setItem("dataId", data.id)}
+                  className="btn btn-warning"
+                >
                   Sửa
-                </button>
+                </Link>
                 &nbsp;
                 <button type="button" className="btn btn-danger">
                   <span className="fa fa-trash mr-5" />
-                  Xóa
+                  <link rel="stylesheet" href="#" /> Xóa
                 </button>
                 &nbsp;
                 <button type="button" className="btn btn-default">
@@ -38,11 +51,7 @@ class ManagerList extends React.Component {
       return result;
     }
 
-    
-     return <tbody>
-       {showProducts(data)}
-     </tbody>;
-
+    return <tbody>{showProducts(data)}</tbody>;
   }
 }
-export {ManagerList};
+export { ManagerList };
