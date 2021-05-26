@@ -12,47 +12,90 @@ class Manager extends React.Component {
       dataOn: [],
       value: "",
     };
-    console.log("Daylasate" + this.state.fakeData);
+    console.log("Đây là State" + this.state.fakeData);
     this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
+    console.log("Did Mount");
     var requestOptions = {
       method: "GET",
       redirect: "follow",
     };
 
     fetch("http://localhost:3000/data", requestOptions)
-      .then((response) => response.text())
+      .then((response) => {
+        return response.text();
+      })
       .then((result) => {
         console.log(
           this.setState({
             fakeData: JSON.parse(result),
           })
-          );
+        );
       })
       .catch((error) => console.log("error", error));
-      
   }
- 
+  goiThemLan() {
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:3000/data", requestOptions)
+      .then((response) => {
+        return response.text();
+      })
+      .then((result) => {
+        console.log(
+          this.setState({
+            fakeData: JSON.parse(result),
+          })
+        );
+      })
+      .catch((error) => console.log("error", error));
+    localStorage.setItem("dataDel",'null')
+    }
+  componentDidUpdate() {
+    console.log("did update");
+    var idDel = localStorage.getItem("dataDel");
+    var url = "http://localhost:3000/data/";
+    var urlIddel = url + idDel;
+    var requestOptions = {
+      method: "DELETE",
+      redirect: "follow",
+    };
+
+    fetch(urlIddel, requestOptions)
+      .then((response) => {
+        if (response.status === 200) {
+          this.goiThemLan();
+        } else {
+          console.log("found");
+        }
+        return response.text();
+      })
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  }
+
   onReceive(prams) {
     const fakeData = this.state.fakeData;
     fakeData.push(prams);
     this.setState(fakeData);
   }
   onChange(event) {
-    console.log(this.state.fakeData)
-    let newData = this.state.fakeData.filter( (e) =>
-        e.nameStudent.search(event.target.value) !== -1
+    console.log(this.state.fakeData);
+    let newData = this.state.fakeData.filter(
+      (e) => e.nameStudent.search(event.target.value) !== -1
     );
-    
+
     this.setState({
       value: event.target.value,
       dataOn: newData,
     });
   }
   render() {
-    
     const getDulieu =
       this.state.value === "" && this.state.fakeData.length > 0 ? (
         <ManagerList
@@ -65,7 +108,6 @@ class Manager extends React.Component {
       );
     return (
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
         <Menu />
         <div className="panel panel-primary">
           <div className="panel-heading">
@@ -85,7 +127,7 @@ class Manager extends React.Component {
                       className="form-control"
                       placeholder="Nhập từ khóa hệ thống sẽ tự động tìm kiếm"
                     />
-                 </div>
+                  </div>
                 </div>
                 <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                   <div className="dropdown">
@@ -133,7 +175,10 @@ class Manager extends React.Component {
               &nbsp;
               <div className="row">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <table id="test-table-xls-button" className="table table-bordered table-hover">
+                  <table
+                    id="test-table-xls-button"
+                    className="table table-bordered table-hover"
+                  >
                     <thead>
                       <tr>
                         <th className="text-center">STT</th>

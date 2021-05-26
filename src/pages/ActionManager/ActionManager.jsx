@@ -41,20 +41,15 @@ class LoginPage extends React.Component {
     });
   }
   onSubmit(event) {
-    //var pushItem = localStorage.setItem('dataAdd',JSON.stringify(this.state));
-    //this.props.onReceive('a');
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
     var raw = JSON.stringify({
-      //"id": `${this.state.id}`,
       nameStudent: `${this.state.nameStudent}`,
       maHs: `${this.state.maHs}`,
       ngaySinh: `${this.state.ngaySinh}`,
       soDienThoai: `${this.state.soDienthoai}`,
       diemTrungBinh: `${this.state.diemTrungBinh}`,
     });
-
     var requestOptions = {
       method: "POST",
       headers: myHeaders,
@@ -77,10 +72,9 @@ class LoginPage extends React.Component {
 
     event.preventDefault();
   }
-  onClick() {}
   render() {
-    const {match} = this.props;
-    console.log(match) 
+    const { match } = this.props;
+    console.log(match);
     //console.log(this.props.match)
     //    const { loggingIn } = this.props;
     //  const { username, password, submitted } = this.state;

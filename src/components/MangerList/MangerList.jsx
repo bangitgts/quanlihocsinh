@@ -4,13 +4,21 @@ import { Link } from "react-router-dom";
 class ManagerList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      dataDel: "",
+    };
     this.editText = this.editText.bind(this);
   }
+  componentDidUpdate() {
+    console.log(localStorage.getItem("dataDel"));
+  }
+
   editText() {
     console.log("anc");
   }
   render() {
-    const getNew = JSON.stringify(localStorage.getItem("dataID")).length > 0 ? "/sua" : "/";
+    const getNew =
+      JSON.stringify(localStorage.getItem("dataID")).length > 0 ? "/sua" : "/";
     let data = this.props.onGetdata;
     function showProducts(data) {
       var result = null;
@@ -34,10 +42,13 @@ class ManagerList extends React.Component {
                   Sửa
                 </Link>
                 &nbsp;
-                <button type="button" className="btn btn-danger">
-                  <span className="fa fa-trash mr-5" />
-                  <link rel="stylesheet" href="#" /> Xóa
-                </button>
+                <Link
+                  to="/manager"
+                  onClick={() => localStorage.setItem("dataDel", data.id)}
+                  className="btn btn-danger"
+                >
+                  Delete
+                </Link>
                 &nbsp;
                 <button type="button" className="btn btn-default">
                   <span className="fa fa-trash mr-5" />
