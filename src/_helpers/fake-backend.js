@@ -11,6 +11,16 @@ export function configureFakeBackend() {
       phoneNumber: "031288121",
       addRess: "Tô Ký, phường Tân Chánh Hiệp, quận 12, tp Hồ Chí Minh",
     },
+    {
+      id: 2,
+      username: "test",
+      password: "test",
+      hocvan: "hocsinh",
+      fullName: "Nguyễn Văn A",
+      dateBirth: "12/2/1993",
+      phoneNumber: "031288121",
+      addRess: "Tô Ký, phường Tân Chánh Hiệp, quận 12, tp Hồ Chí Minh",
+    },
   ];
   users.push(userStd)
   let realFetch = window.fetch;
@@ -22,8 +32,7 @@ export function configureFakeBackend() {
           let filteredUsers = users.filter((user) => {
             return (
               user.username === params.username &&
-              user.password === params.password &&
-              user.hocvan === "giaovien"
+              user.password === params.password 
             );
           });
 

@@ -15,7 +15,7 @@ class ChangeStudent extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   componentDidMount() {
-    console.log("Mount lan 1");
+    console.log('Did Mount Change')
     var b = localStorage.getItem("dataId");
     console.log("gia tri b", b);
     var requestOptions = {
@@ -28,7 +28,7 @@ class ChangeStudent extends React.Component {
       .then((result) => {
         const test = JSON.parse(result);
         for (let item of test) {
-          if (item.id === b) {
+          if (item.id == b) {
             console.log(item);
             this.setState({
               id: item.id,

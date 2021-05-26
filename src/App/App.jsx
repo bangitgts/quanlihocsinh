@@ -7,6 +7,7 @@ import { PrivateRoute } from "../_components";
 import { Homepage } from "../pages/Homepage";
 import { routes } from "../routes";
 import { Manager } from "../pages/Manager";
+import { About } from "../pages/ForStudent";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -39,6 +40,8 @@ class App extends React.Component {
             <div>
               <PrivateRoute exact path="/" component={Homepage} />
               <PrivateRoute exact path="/manager" component={Manager} /> 
+
+              <PrivateRoute exact path="/forStudent" component={About} /> 
               {this.showContent(routes)}
             </div>
           </div>

@@ -65,7 +65,7 @@ class Manager extends React.Component {
       method: "DELETE",
       redirect: "follow",
     };
-
+    
     fetch(urlIddel, requestOptions)
       .then((response) => {
         if (response.status === 200) {

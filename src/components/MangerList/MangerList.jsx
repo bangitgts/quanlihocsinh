@@ -16,9 +16,8 @@ class ManagerList extends React.Component {
   editText() {
     console.log("anc");
   }
+
   render() {
-    const getNew =
-      JSON.stringify(localStorage.getItem("dataID")).length > 0 ? "/sua" : "/";
     let data = this.props.onGetdata;
     function showProducts(data) {
       var result = null;
@@ -35,7 +34,7 @@ class ManagerList extends React.Component {
               <td>{data.diemTrungBinh}</td>
               <td className="text-center">
                 <Link
-                  to={getNew}
+                  to="/sua"
                   onClick={() => localStorage.setItem("dataId", data.id)}
                   className="btn btn-warning"
                 >
