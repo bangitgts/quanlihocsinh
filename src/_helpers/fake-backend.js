@@ -23,6 +23,7 @@ export function configureFakeBackend() {
       addRess: "Tô Ký, phường Tân Chánh Hiệp, quận 12, tp Hồ Chí Minh",
     },
   ];
+  //console.log("dday la userSTD" + typeof userStd);
   users.push(userStd);
   let realFetch = window.fetch;
   window.fetch = function (url, opts) {

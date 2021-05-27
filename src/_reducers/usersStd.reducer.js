@@ -1,4 +1,4 @@
-const userStd = {
+export const userStd = {
   id: 1,
   username: "testadmin",
   password: "testadmin",
@@ -27,8 +27,9 @@ var config = {
 axios(config)
 .then(function (response) {
   test == response.data;
-  console.log(userStd)
+  console.log(typeof userStd)
 })
 .catch(function (error) {
   console.log(error);
 });
+
