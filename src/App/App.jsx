@@ -40,7 +40,6 @@ class App extends React.Component {
             <div>
               <PrivateRoute exact path="/" component={Homepage} />
               <PrivateRoute exact path="/manager" component={Manager} /> 
-
               <PrivateRoute exact path="/forStudent" component={About} /> 
               {this.showContent(routes)}
             </div>

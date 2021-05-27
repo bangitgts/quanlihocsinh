@@ -2,7 +2,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Link} from "react-router-dom";
 const menus = [
   {
     name: "HomePage",
@@ -13,12 +13,7 @@ const menus = [
     name: "Manager",
     to: "/manager",
     exact: false,
-  },
-  {
-    name: "About",
-    to: "/about",
-    exact: false,
-  },
+  }
 ];
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
   return (

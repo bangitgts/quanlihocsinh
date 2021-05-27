@@ -1,4 +1,5 @@
-import {userStd} from '../_reducers/usersStd.reducer'
+import { userStd } from "../_reducers/usersStd.reducer";
+
 export function configureFakeBackend() {
   let users = [
     {
@@ -22,7 +23,7 @@ export function configureFakeBackend() {
       addRess: "Tô Ký, phường Tân Chánh Hiệp, quận 12, tp Hồ Chí Minh",
     },
   ];
-  users.push(userStd)
+  users.push(userStd);
   let realFetch = window.fetch;
   window.fetch = function (url, opts) {
     return new Promise((resolve, reject) => {
@@ -32,7 +33,7 @@ export function configureFakeBackend() {
           let filteredUsers = users.filter((user) => {
             return (
               user.username === params.username &&
-              user.password === params.password 
+              user.password === params.password
             );
           });
 
@@ -75,6 +76,4 @@ export function configureFakeBackend() {
       }, 500);
     });
   };
-
 }
-

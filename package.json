@@ -10,6 +10,7 @@
     "start": "webpack-dev-server --open"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "history": "^4.6.3",
     "react": "^16.0.0",
     "react-csv": "^2.0.3",
