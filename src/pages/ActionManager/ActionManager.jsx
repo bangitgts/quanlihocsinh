@@ -12,7 +12,16 @@ class LoginPage extends React.Component {
       maHs: "",
       ngaySinh: "",
       soDienthoai: "",
-      diemTrungBinh: "",
+      diemToan: "",
+      diemLy: "",
+      diemVan: "",
+      diemHoa: "",
+      diemSinh: "",
+      diemTin: "",
+      diemNguVan: "",
+      diemLichSu: "",
+      diemDiaLy: "",
+      diemGDCD: "",
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -48,7 +57,16 @@ class LoginPage extends React.Component {
       maHs: `${this.state.maHs}`,
       ngaySinh: `${this.state.ngaySinh}`,
       soDienThoai: `${this.state.soDienthoai}`,
-      diemTrungBinh: `${this.state.diemTrungBinh}`,
+      diemToan: `${this.state.diemToan}`,
+      diemLy: `${this.state.diemLy}`,
+      diemVan: `${this.state.diemVan}`,
+      diemHoa: `${this.state.diemHoa}`,
+      diemSinh: `${this.state.diemSinh}`,
+      diemTin: `${this.state.diemTin}`,
+      diemNguVan: `${this.state.diemNguVan}`,
+      diemLichSu: `${this.state.diemLichSu}`,
+      diemDiaLy: `${this.state.diemDiaLy}`,
+      diemGDCD: `${this.state.diemGDCD}`,
     });
     var requestOptions = {
       method: "POST",
@@ -61,23 +79,9 @@ class LoginPage extends React.Component {
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
     alert("Them thanh cong");
-    this.setState({
-      id: "",
-      nameStudent: "",
-      maHs: "",
-      ngaySinh: "",
-      soDienthoai: "",
-      diemTrungBinh: "",
-    });
-
     event.preventDefault();
   }
   render() {
-    const { match } = this.props;
-    console.log(match);
-    //console.log(this.props.match)
-    //    const { loggingIn } = this.props;
-    //  const { username, password, submitted } = this.state;
     return (
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <Menu />
@@ -119,7 +123,7 @@ class LoginPage extends React.Component {
               />
             </div>
             <div className="form-group">
-              <label>SDT</label>
+              <label>Số điện thoại</label>
               <input
                 value={this.state.soDienthoai}
                 type="number"
@@ -129,16 +133,95 @@ class LoginPage extends React.Component {
               />
             </div>
             <div className="form-group">
-              <label>diem TB</label>
+              <label>Điểm Toán</label>
               <input
-                value={this.state.diemTrungBinh}
+                value={this.state.diemToan}
                 type="number"
                 className="form-control"
-                name="diemTrungBinh"
+                name="diemToan"
                 onChange={this.onChange}
               />
             </div>
-
+            <div className="form-group">
+              <label>Điểm Lý</label>
+              <input
+                value={this.state.diemLy}
+                type="number"
+                className="form-control"
+                name="diemLy"
+                onChange={this.onChange}
+              />
+            </div>{" "}
+            <div className="form-group">
+              <label>Điểm Văn </label>
+              <input
+                value={this.state.diemVan}
+                type="number"
+                className="form-control"
+                name="diemVan"
+                onChange={this.onChange}
+              />
+            </div>{" "}
+            <div className="form-group">
+              <label>Điểm Hóa</label>
+              <input
+                value={this.state.diemHoa}
+                type="number"
+                className="form-control"
+                name="diemHoa"
+                onChange={this.onChange}
+              />
+            </div>{" "}
+            <div className="form-group">
+              <label>Điểm Sinh</label>
+              <input
+                value={this.state.diemSinh}
+                type="number"
+                className="form-control"
+                name="diemSinh"
+                onChange={this.onChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Điểm Tin</label>
+              <input
+                value={this.state.diemTin}
+                type="number"
+                className="form-control"
+                name="diemTin"
+                onChange={this.onChange}
+              />
+            </div>{" "}
+            <div className="form-group">
+              <label>Điểm Lịch Sử</label>
+              <input
+                value={this.state.diemLichSu}
+                type="number"
+                className="form-control"
+                name="diemLichSu"
+                onChange={this.onChange}
+              />
+            </div>{" "}
+            <div className="form-group">
+              <label>Điểm Địa Lý</label>
+              <input
+                value={this.state.diemDiaLy}
+                type="number"
+                className="form-control"
+                name="diemDiaLy"
+                onChange={this.onChange}
+              />
+            </div>{" "}
+            <div className="form-group">
+              <label>Điểm GDCD</label>
+              <input
+                value={this.state.diemGDCD}
+                type="number"
+                className="form-control"
+                name="diemGDCD"
+                onChange={this.onChange}
+              />
+            </div>{" "}
             <button type="submit" className="btn btn-primary">
               Lưu Lại
             </button>

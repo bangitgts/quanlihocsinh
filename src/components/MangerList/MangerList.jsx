@@ -16,9 +16,11 @@ class ManagerList extends React.Component {
   editText() {
     console.log("anc");
   }
-
+  
   render() {
+
     let data = this.props.onGetdata;
+    // let diemToan = parseFloat(data.diemToan);
     function showProducts(data) {
       var result = null;
       let i = 1;
@@ -30,8 +32,22 @@ class ManagerList extends React.Component {
               <td>{data.nameStudent}</td>
               <td>{data.maHs}</td>
               <td>{data.ngaySinh}</td>
-              <td>18389389</td>
-              <td>{data.diemTrungBinh}</td>
+              <td>
+                {data.soDienThoai}
+              </td>
+              <td>{
+                  Math.round(([parseFloat(data.diemToan),
+                  parseFloat(data.diemLy),
+                  parseFloat(data.diemVan),
+                  parseFloat(data.diemHoa),
+                  parseFloat(data.diemSinh),
+                  parseFloat(data.diemLichSu),
+                  parseFloat(data.diemDiaLy),
+                  parseFloat(data.diemGDCD),
+                  parseFloat(data.diemTin)].reduce((a,b) => a+b)/9)*100)/100
+
+                }
+                </td>
               <td className="text-center">
                 <Link
                   to="/sua"
