@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { userActions } from "../_actions";
 import { Information } from "../components/Information";
@@ -9,6 +8,7 @@ class HomePage extends React.Component {
   }
   render() {
     const { user, users } = this.props;
+
     return (
       <div className="row">
        <Information/>
@@ -22,7 +22,7 @@ class HomePage extends React.Component {
               <div className="panel-body">
                 <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                   <img
-                    src="http://www.iconarchive.com/icons/iconscity/flags/256/vietnam-icon.png"
+                    src= {this.props.user.url}
                     className="img-responsive"
                     alt="Image"
                   />

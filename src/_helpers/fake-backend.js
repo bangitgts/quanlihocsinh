@@ -5,11 +5,17 @@ export function configureFakeBackend() {
     {
       id: 1,
       username: "nguyenvana",
+      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/User-info.svg/1024px-User-info.svg.png",
       password: "abc",
       hocvan: "giaovien",
       fullName: "Nguyễn Văn A",
-      dateBirth: "12/2/1993",
+      dateBirth: "12/2/1990",
       phoneNumber: "031288121",
+      email: "test@gmail.com",
+      soCmnd: "21229219",
+      ngayCap: "25/01/2008",
+      danToc: "Kinh",
+      tonGiao: "Không",
       addRess: "Tô Ký, phường Tân Chánh Hiệp, quận 12, tp Hồ Chí Minh",
     },
     {
@@ -34,7 +40,7 @@ export function configureFakeBackend() {
           let filteredUsers = users.filter((user) => {
             return (
               user.username === params.username &&
-              user.password === params.password
+              user.password === params.password 
             );
           });
 
@@ -47,11 +53,17 @@ export function configureFakeBackend() {
               hocVan: user.hocvan,
               dateBirth: user.dateBirth,
               phoneNumber: user.phoneNumber,
+              email: user.email,
+              soCmnd: user.soCmnd,
+              ngayCap: user.ngayCap,
+              danToc: user.danToc,
+              tonGiao: user.tonGiao,
+              addRess: user.addRess,
               token: "fake-jwt-token",
             };
             resolve({
-              ok: true,
-              text: () => Promise.resolve(JSON.stringify(responseJson)),
+             ok: true,
+             text: () => Promise.resolve(JSON.stringify(responseJson)),
             });
           } else {
             reject("Tài khoản hoặc mật khẩu không chính xác");
