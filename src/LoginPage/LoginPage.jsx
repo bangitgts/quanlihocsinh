@@ -37,6 +37,7 @@ class LoginPage extends React.Component {
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h2>Đăng nhập hệ thống</h2>
+                <p>Đối với học sinh tên đăng nhập là mã số học sinh, password là số điện thoại</p>
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>
                         <label htmlFor="username">Tên Tài Khoản</label>

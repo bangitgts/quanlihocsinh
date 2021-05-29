@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { userActions } from "../../_actions";
 import { Menu } from "../../components/Menu";
+import { Redirect } from "react-router";
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +19,6 @@ class LoginPage extends React.Component {
       diemHoa: "",
       diemSinh: "",
       diemTin: "",
-      diemNguVan: "",
       diemLichSu: "",
       diemDiaLy: "",
       diemGDCD: "",
@@ -58,12 +58,12 @@ class LoginPage extends React.Component {
       ngaySinh: `${this.state.ngaySinh}`,
       soDienThoai: `${this.state.soDienthoai}`,
       diemToan: `${this.state.diemToan}`,
+      hocvan: "hocsinh",
       diemLy: `${this.state.diemLy}`,
       diemVan: `${this.state.diemVan}`,
       diemHoa: `${this.state.diemHoa}`,
       diemSinh: `${this.state.diemSinh}`,
       diemTin: `${this.state.diemTin}`,
-      diemNguVan: `${this.state.diemNguVan}`,
       diemLichSu: `${this.state.diemLichSu}`,
       diemDiaLy: `${this.state.diemDiaLy}`,
       diemGDCD: `${this.state.diemGDCD}`,
@@ -79,6 +79,23 @@ class LoginPage extends React.Component {
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
     alert("Them thanh cong");
+    this.setState({
+      id: "",
+      nameStudent: "",
+      maHs: "",
+      ngaySinh: "",
+      soDienthoai: "",
+      diemToan: "",
+      diemLy: "",
+      diemVan: "",
+      diemHoa: "",
+      diemSinh: "",
+      diemTin: "",
+      diemLichSu: "",
+      diemDiaLy: "",
+      diemGDCD: "",
+    })
+    
     event.preventDefault();
   }
   render() {
