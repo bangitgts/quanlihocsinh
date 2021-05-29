@@ -6,11 +6,10 @@ var axios = require("axios");
 
 class About extends React.Component {
   render() {
-    
     const data = JSON.parse(localStorage.getItem("user"));
     return (
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-       <MenuForST/>
+        <MenuForST />
         <div className="container">
           <div className="row">
             <div className="col-sm-12">
@@ -24,15 +23,20 @@ class About extends React.Component {
                       <strong>Tên học sinh:</strong> {data.nameStudent}
                     </p>
                     <p>
-                      <strong>Mã số học sinh:</strong>{data.maHs}
+                      <strong>Mã số học sinh:</strong>
+                      {data.maHs}
                     </p>
                     <p>
-                      <strong>Ngày sinh:</strong>{data.ngaySinh}
+                      <strong>Ngày sinh:</strong>
+                      {data.ngaySinh}
                     </p>
                     <p>
-                      <strong>Số điện thoại:</strong>{data.soDienThoai}
+                      <strong>Số điện thoại:</strong>
+                      {data.soDienThoai}
                     </p>
-                    <h3><strong>Bảng điểm</strong></h3>
+                    <h3>
+                      <strong>Bảng điểm</strong>
+                    </h3>
                     <table class="table table-condensed table-hover">
                       <thead>
                         <tr>
@@ -59,11 +63,26 @@ class About extends React.Component {
                           <td>{data.diemLichSu}</td>
                           <td>{data.diemDiaLy}</td>
                           <td>{data.diemGDCD}</td>
-                          <td>{(parseFloat(data.diemToan) + parseFloat(data.diemLy) + parseFloat(data.diemVan) + parseFloat(data.diemHoa) + parseFloat(data.diemSinh) + parseFloat(data.diemTin) + parseFloat(data.diemLichSu) + parseFloat(data.diemDiaLy) + parseFloat(data.diemGDCD))/9 }</td>
+                          <td>
+                            {Math.round(
+                              ([
+                                parseFloat(data.diemToan),
+                                parseFloat(data.diemLy),
+                                parseFloat(data.diemVan),
+                                parseFloat(data.diemHoa),
+                                parseFloat(data.diemSinh),
+                                parseFloat(data.diemLichSu),
+                                parseFloat(data.diemDiaLy),
+                                parseFloat(data.diemGDCD),
+                                parseFloat(data.diemTin),
+                              ].reduce((a, b) => a + b) /
+                                9) *
+                                100
+                            ) / 100}
+                          </td>
                         </tr>
                       </tbody>
                     </table>
-                    
                   </div>
                 </div>
               </div>

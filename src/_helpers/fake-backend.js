@@ -2,39 +2,39 @@ import userStd from "../_reducers/usersStd.reducer";
 
 export function configureFakeBackend() {
   var users = [
-    // {
-    //   id: 1,
-    //   username: "nguyenvana",
-    //   url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/User-info.svg/1024px-User-info.svg.png",
-    //   password: "abc",
-    //   hocvan: "giaovien",
-    //   fullName: "Nguyễn Văn A",
-    //   dateBirth: "12/2/1990",
-    //   phoneNumber: "031288121",
-    //   email: "test@gmail.com",
-    //   soCmnd: "21229219",
-    //   ngayCap: "25/01/2008",
-    //   danToc: "Kinh",
-    //   tonGiao: "Không",
-    //   addRess: "Tô Ký, phường Tân Chánh Hiệp, quận 12, tp Hồ Chí Minh",
-    // },
-    // {
-    //   nameStudent: "Test1",
-    //   maHs: "1929",
-    //   ngaySinh: "0199-02-02",
-    //   soDienThoai: "1929129",
-    //   diemToan: "10",
-    //   hocvan: "hocsinh",
-    //   diemLy: "9",
-    //   diemVan: "8",
-    //   diemHoa: "8",
-    //   diemSinh: "2",
-    //   diemTin: "3",
-    //   diemLichSu: "8",
-    //   diemDiaLy: "3",
-    //   diemGDCD: "7",
-    //   id: 2
-    // }
+    {
+      id: 1,
+      username: "nguyenvana",
+      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/User-info.svg/1024px-User-info.svg.png",
+      password: "abc",
+      hocvan: "giaovien",
+      fullName: "Nguyễn Văn A",
+      dateBirth: "12/2/1990",
+      phoneNumber: "031288121",
+      email: "test@gmail.com",
+      soCmnd: "21229219",
+      ngayCap: "25/01/2008",
+      danToc: "Kinh",
+      tonGiao: "Không",
+      addRess: "Tô Ký, phường Tân Chánh Hiệp, quận 12, tp Hồ Chí Minh",
+    },
+    {
+      nameStudent: "Test1",
+      maHs: "1929",
+      ngaySinh: "0199-02-02",
+      soDienThoai: "1929129",
+      diemToan: "10",
+      hocvan: "hocsinh",
+      diemLy: "9",
+      diemVan: "8",
+      diemHoa: "8",
+      diemSinh: "2",
+      diemTin: "3",
+      diemLichSu: "8",
+      diemDiaLy: "3",
+      diemGDCD: "7",
+      id: 2
+    }
   ];
   var requestOptions = {
     method: 'GET',
@@ -43,13 +43,18 @@ export function configureFakeBackend() {
  // var abc;
   fetch("http://localhost:3000/data", requestOptions)
     .then(response => response.text())
-    .then(result => {localStorage.setItem('datapost',JSON.stringify(users.concat(JSON.parse(result)))
+    .then(result => {localStorage.setItem('datapost',JSON.stringify(JSON.parse(result))
       )})
     .catch(error => console.log('error', error));
 
-  //console.log(abc);
-  users = JSON.parse(localStorage.getItem('datapost'));
+ 
+  //users = users.push(JSON.parse(localStorage.getItem('datapost')));
   console.log(users)
+  console.log(JSON.parse(localStorage.getItem('datapost')))
+  var b = users.concat(JSON.parse(localStorage.getItem('datapost')))
+  console.log(b)
+  users = b;
+  console.log("users sau",b)
   let realFetch = window.fetch;
   window.fetch = function (url, opts) {
     return new Promise((resolve, reject) => {

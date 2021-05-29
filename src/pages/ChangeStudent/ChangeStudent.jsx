@@ -7,15 +7,23 @@ class ChangeStudent extends React.Component {
       id: "",
       nameStudent: "",
       maHs: "",
-      soDienthoai: "",
-      diemTrungBinh: "",
       ngaySinh: "",
+      soDienThoai: "",
+      diemToan: "",
+      diemLy: "",
+      diemVan: "",
+      diemHoa: "",
+      diemSinh: "",
+      diemTin: "",
+      diemLichSu: "",
+      diemDiaLy: "",
+      diemGDCD: "",
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
   componentDidMount() {
-    console.log('Did Mount Change')
+    console.log("Did Mount Change");
     var b = localStorage.getItem("dataId");
     console.log("gia tri b", b);
     var requestOptions = {
@@ -35,10 +43,17 @@ class ChangeStudent extends React.Component {
               nameStudent: item.nameStudent,
               maHs: item.maHs,
               ngaySinh: item.ngaySinh,
-              soDienthoai: item.soDienThoai,
-              diemTrungBinh: item.diemTrungBinh,
+              soDienThoai: item.soDienThoai,
+              diemToan: item.diemToan,
+              diemLy: item.diemLy,
+              diemVan: item.diemVan,
+              diemHoa: item.diemHoa,
+              diemSinh: item.diemSinh,
+              diemTin: item.diemTin,
+              diemLichSu: item.diemLichSu,
+              diemDiaLy: item.diemDiaLy,
+              diemGDCD: item.diemGDCD,
             });
-            console.log("so dien thoai la" + item.soDienthoai);
           }
         }
       })
@@ -51,19 +66,28 @@ class ChangeStudent extends React.Component {
     this.setState({
       [name]: value,
     });
-    console.log(this.state);
   }
   onSubmit(event) {
     //var pushItem = localStorage.setItem('dataAdd',JSON.stringify(this.state));
     //this.props.onReceive('a');
+    //const item = this.state;
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({
+      id: this.state.id,
       nameStudent: this.state.nameStudent,
       maHs: this.state.maHs,
       ngaySinh: this.state.ngaySinh,
-      soDienThoai: this.state.soDienthoai,
-      diemTrungBinh: this.state.die,
+      soDienThoai: this.state.soDienThoai,
+      diemToan: this.state.diemToan,
+      diemLy: this.state.diemLy,
+      diemVan: this.state.diemVan,
+      diemHoa: this.state.diemHoa,
+      diemSinh: this.state.diemSinh,
+      diemTin: this.state.diemTin,
+      diemLichSu: this.state.diemLichSu,
+      diemDiaLy: this.state.diemDiaLy,
+      diemGDCD: this.state.diemGDCD,
     });
 
     var requestOptions = {
@@ -117,7 +141,7 @@ class ChangeStudent extends React.Component {
               />
             </div>
             <div className="form-group">
-              <label>Ngay Sinh:</label>
+              <label>Ngày Sinh:</label>
               <input
                 value={this.state.ngaySinh}
                 type="date"
@@ -127,9 +151,9 @@ class ChangeStudent extends React.Component {
               />
             </div>
             <div className="form-group">
-              <label>SDT</label>
+              <label>Số điện thoại</label>
               <input
-                value={this.state.soDienthoai}
+                value={this.state.soDienThoai}
                 type="text"
                 className="form-control"
                 name="soDienthoai"
@@ -137,16 +161,85 @@ class ChangeStudent extends React.Component {
               />
             </div>
             <div className="form-group">
-              <label>diem TB</label>
+              <label>Điểm Toán</label>
               <input
-                value={this.state.diemTrungBinh}
+                value={this.state.diemToan}
                 type="number"
                 className="form-control"
-                name="diemTrungBinh"
+                name="diemToan"
                 onChange={this.onChange}
               />
             </div>
-
+            <div className="form-group">
+              <label>Điểm Văn</label>
+              <input
+                value={this.state.diemVan}
+                type="number"
+                className="form-control"
+                name="diemVan"
+                onChange={this.onChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Điểm Hóa</label>
+              <input
+                value={this.state.diemHoa}
+                type="number"
+                className="form-control"
+                name="diemHoa"
+                onChange={this.onChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Điểm Sinh</label>
+              <input
+                value={this.state.diemSinh}
+                type="number"
+                className="form-control"
+                name="diemSinh"
+                onChange={this.onChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Điểm Tin</label>
+              <input
+                value={this.state.diemTin}
+                type="number"
+                className="form-control"
+                name="diemTin"
+                onChange={this.onChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Điểm Lịch Sử</label>
+              <input
+                value={this.state.diemLichSu}
+                type="number"
+                className="form-control"
+                name="diemLichSu"
+                onChange={this.onChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Điểm Địa Lý</label>
+              <input
+                value={this.state.diemDiaLy}
+                type="number"
+                className="form-control"
+                name="diemDiaLy"
+                onChange={this.onChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Điểm GDCD</label>
+              <input
+                value={this.state.diemGDCD}
+                type="number"
+                className="form-control"
+                name="diemGDCD"
+                onChange={this.onChange}
+              />
+            </div>
             <button type="submit" className="btn btn-primary">
               Lưu Lại
             </button>
